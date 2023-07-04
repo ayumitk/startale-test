@@ -130,17 +130,13 @@ const post = data.value.posts.map(
   }
 )[0];
 
-// let orConditions = "";
-// if (post.tagsOriginal !== undefined) {
-//   orConditions = post.tagsOriginal
-//     .split(",")
-//     .map((tag: string) => `{ tagsOriginal_containsInsensitive: "${tag}" }`)
-//     .join(", ");
-// }
-const orConditions = post.tagsOriginal
-  .split(",")
-  .map((tag: string) => `{ tagsOriginal_containsInsensitive: "${tag}" }`)
-  .join(", ");
+let orConditions = "";
+if (post.tagsOriginal !== undefined) {
+  orConditions = post.tagsOriginal
+    .split(",")
+    .map((tag: string) => `{ tagsOriginal_containsInsensitive: "${tag}" }`)
+    .join(", ");
+}
 
 console.log("post.tagsOriginal: ", post.tagsOriginal);
 console.log("orConditions: ", orConditions);
